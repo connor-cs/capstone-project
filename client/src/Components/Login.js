@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-//useHistory hook to redirect user to explore after logging in
 export default function Login() {
-  
+
+  const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -35,11 +35,17 @@ export default function Login() {
     })
     .then(res=> res.json())
     .then(navigate('/explore'))
-    .catch(error => console.log(error))
+    .catch(error => setErrors(error))
   }
 
 
-
+//I would do this in css with flex. You can put all the inputs in a div, give that div an id or class name, 
+//and then set display to flex and flex-direction to column.
+//or try this css:
+// .form-part label {
+//   display: block;
+//   margin: 10px 0 0;
+// }
   return (
     <main className="login-page">
       <form onSubmit={handleSubmit}>
@@ -50,8 +56,10 @@ export default function Login() {
         <label>Password</label>
         <input type="password" name="password" value={password} onChange={handleChange}/>
       </form>
+      {errors ? errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
     </main>
     //display map over errors array
     //set timeout to display errors, then reset state back to empty array, trigger rerender
+    
   );
 }
