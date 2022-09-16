@@ -12,26 +12,36 @@ export default function Explore() {
     }
   )
  
+  function handleChange(e) {
+    const { name, value } = e.target
+    setUserSearch({...userSearch, [name]: value})
+    console.log('name:', name, 'value:', value)
+  }
 
-  function handleSubmit(e) {
-    // e.preventDefault()
+  function onSubmit(e) {
+    e.preventDefault()
     console.log('sumbitted')
-    
-    fetch('/')
+    console.log(userSearch)
+    // fetch('/hikes', {
+    //   method: 'GET',
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: JSON.stringify()
+    // })
+    // .then(res=>res.json)
   }
 
 
   return (
     <main className='explore-page'>
       <div>
-        <form onSubmit={handleSubmit()}>
+        <form onSubmit={onSubmit}>
           
-          <input type="text" value = "city" placeholder="City"></input>
+          <input type="text" name="city" value={userSearch.city} placeholder="City" onChange={handleChange}></input>
           
-          <SelectUSState placeholder="state" />
+          <SelectUSState placeholder="state" name="state" value={userSearch.state} />
           
           <label>Max distance:</label>
-          <input type="number"></input>
+          <input type="number" name="distance" onChange={handleChange}></input>
           
           <button>submit</button>
         </form>
