@@ -48,14 +48,16 @@ export default function Login() {
 // }
   return (
     <main className="login-page">
+      <div className="form-div">
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input type="text" name="name" value={name} onChange={handleChange}/>
+        {/* <label>Name</label>
+        <input type="text" name="name" value={name} onChange={handleChange}/> */}
         <label>Email</label>
         <input type="text" name="email" value={email} onChange={handleChange}/>
         <label>Password</label>
         <input type="password" name="password" value={password} onChange={handleChange}/>
       </form>
+      </div>
       {errors ? errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
     </main>
     //display map over errors array

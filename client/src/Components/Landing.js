@@ -1,11 +1,21 @@
 import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 // import styled from 'styled-components'
 
 export default function Landing() {
+  
+  const navigate = useNavigate()
+  
   return (
-    <main className='landing-page'>
-      <button className='explore-btn'>Explore trails</button>
-    </main>
+    <>
+      <main className='landing-page'>
+        <div className='welcome-message'>
+          <h2>Welcome to Good Hikes</h2>
+          <button className='explore-btn' onClick={()=>navigate('/explore')}>Explore trails</button>
+        </div>
+      </main>
+      <p>2022 Connor Cyphers</p>
+    </>
   )
 }
 

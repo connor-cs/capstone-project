@@ -7,7 +7,7 @@ export default function Signup() {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   
-  function handleSubmit() {
+  function handleSubmit(e) {
     e.preventDefault()
 
     fetch("/signup", {
@@ -30,11 +30,11 @@ export default function Signup() {
     <main className="signup-page">
       <form>
         <label>Username:</label>
-        <input type="text" value={username} onChange={()=>setUsername(e.target.value)}></input>
+        <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
         <label>Email:</label>
-        <input type="text" value={email} onChange={()=>setEmail(e.target.value)}></input>
+        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
         <label>Password:</label>
-        <input type="password" value ={password} onChange={()=>setPassword(e.target.value)}></input>
+        <input type="password" value ={password} onChange={(e)=>setPassword(e.target.value)}></input>
       </form>
     </main>
   );
