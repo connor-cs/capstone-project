@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   
   resources :sessions, only: [:create, :destroy]
-  # delete "/logout", to: "sessions#destroy"
-  # post "/login", to: "sessions#create"
-  
-  post "/signup", to: "users#create"
-  
+  resources :users, only: [:create, :show, :update, :destroy]
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

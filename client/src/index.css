@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo|Open+Sans|Quicksand|Permanent+Marker');
 
+
 body {
 font-family: 'Open Sans';
 height: 100vh;
@@ -51,7 +52,7 @@ code {
   position: fixed;
   display: center;
   bottom: 50vh;
-  left: 50vh
+  left: 50vh;
 }
 
 .welcome-message {

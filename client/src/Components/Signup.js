@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   
   const [password, setPassword] = useState("")
   const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
+  const navigate = useNavigate()
   
   function handleSubmit(e) {
     e.preventDefault()
@@ -17,24 +18,23 @@ export default function Signup() {
       },
       body: JSON.stringify({
         username,
-        email,
         password
       })
     })
-    .then(res=>res.json)
+    .then(res=>console.log(res.json))
+    .then(navigate('/me'))
   }
   
   //this needs tested
   //console log on values from the onChange to make sure they are as expected
   return (
     <main className="signup-page">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Username:</label>
         <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}></input>
-        <label>Email:</label>
-        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
         <label>Password:</label>
         <input type="password" value ={password} onChange={(e)=>setPassword(e.target.value)}></input>
+        <button type="submit">Signup</button>
       </form>
     </main>
   );
