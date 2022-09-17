@@ -24,7 +24,7 @@ code {
 
 .header-bar{
   border: solid, #e9d0b4;
-  background-color: #e9d0b4;
+  background-color: #EBECEC;
   padding-bottom: 25px;
   padding-top: 30px;
   margin-top: 0px;
@@ -41,11 +41,25 @@ code {
   width: 100%;
 }
 
+.login-page {
+  background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+  padding-top: 1400px;
+  background-repeat: no-repeat;
+}
+
+.form-div {
+  position: fixed;
+  display: center;
+  bottom: 50vh;
+  left: 50vh
+}
+
 .welcome-message {
   font-size: 40px;
   font-weight: 70;
   letter-spacing: .1em;
   font-family: 'Open Sans';
+  color: #EBECEC;
   background-color: transparent;
   bottom: 40vh;
   left: 50vw;
@@ -54,10 +68,10 @@ code {
   /* min-height: 100vh; doesn't do anything*/
 }
 
-.explore-btn {
+/* .explore-btn {
   bottom: 40vw;
   left: 50vw;
   display: center;
   position: fixed;
   font-family: 'Open Sans';
-}
+} */
