@@ -9,6 +9,7 @@ import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import User from './User';
+import Hikes from './Hikes';
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
         <Route exact path='/explore' element={<Explore />}></Route>
 
         <Route exact path='/about' element={<About />}></Route>
+
+        <Route exact path = '/trails' element={<Hikes/>}></Route>
         
       </Routes>
     </div>

@@ -22,7 +22,6 @@ export default function Signup() {
       })
     })
     .then(res=>console.log(res.json))
-    .then(navigate('/me'))
   }
   
   //this needs tested
