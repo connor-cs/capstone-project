@@ -12,6 +12,14 @@ export default function Explore() {
     }
   )
   const [hikes, setHikes] = useState([])
+
+  function stateInput(e) {
+    const stateCopy = {
+      ...userSearch
+    }
+    stateCopy.state = e
+    setUserSearch(stateCopy)
+  }
  
   function handleChange(e) {
     const { name, value } = e.target
@@ -23,7 +31,7 @@ export default function Explore() {
     e.preventDefault()
     console.log('sumbitted')
     console.log(userSearch)
-    // fetch('/hikes', {
+    // fetch('/trails', {
     //   method: 'GET',
     //   headers: {'Content-Type': 'application/json'},
     //   body: JSON.stringify(userSearch)
@@ -40,7 +48,7 @@ export default function Explore() {
           
           <input type="text" name="city" value={userSearch.city} placeholder="City" onChange={handleChange}></input>
           
-          <SelectUSState placeholder="state" name="state" value={userSearch.state} />
+          <SelectUSState placeholder="state" name="state" value={userSearch.state} onChange={stateInput}/>
           
           <label>Max distance:</label>
           <input type="number" name="distance" onChange={handleChange}></input>
