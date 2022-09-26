@@ -1,18 +1,20 @@
 import React from "react";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function Login() {
 
   const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
-  
+
   const navigate = useNavigate()
-  const {name, email, password} = formData
+  const { username, email, password } = formData
 
   function handleChange(e) {
     setformData({
@@ -20,48 +22,47 @@ export default function Login() {
       [e.target.name]: e.target.value
     })
   }
-  
+
 
   //double check this
   function handleSubmit(e) {
     e.preventDefault()
     const user = {
-      name, email, password
+      username, email, password
     }
     fetch('/login', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
     })
-    .then(res=> res.json())
-    .then(navigate('/explore'))
-    .catch(error => setErrors(error))
+      .then(res => res.json())
+      .then(navigate('/explore'))
+      .catch(error => setErrors(error))
   }
 
 
-//I would do this in css with flex. You can put all the inputs in a div, give that div an id or class name, 
-//and then set display to flex and flex-direction to column.
-//or try this css:
-// .form-part label {
-//   display: block;
-//   margin: 10px 0 0;
-// }
+  //I would do this in css with flex. You can put all the inputs in a div, give that div an id or class name, 
+  //and then set display to flex and flex-direction to column.
+  //or try this css:
+  // .form-part label {
+  //   display: block;
+  //   margin: 10px 0 0;
+  // }
   return (
     <main className="login-page">
       <div className="form-div">
-      <form onSubmit={handleSubmit}>
-        {/* <label>Name</label>
-        <input type="text" name="name" value={name} onChange={handleChange}/> */}
-        <label>Email</label>
-        <input type="text" name="email" value={email} onChange={handleChange}/>
-        <label>Password</label>
-        <input type="password" name="password" value={password} onChange={handleChange}/>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <label>Username</label>
+          <input type="text" name="name" value={username} onChange={handleChange} />
+          <label>Password</label>
+          <input type="password" name="password" value={password} onChange={handleChange} />
+          <button type="submit">Login</button>
+        </form>
       </div>
-      {errors ? errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+      {errors ? errors.map(e => <div>{e[0] + ': ' + e[1]}</div>) : null}
     </main>
     //display map over errors array
     //set timeout to display errors, then reset state back to empty array, trigger rerender
-    
+
   );
 }

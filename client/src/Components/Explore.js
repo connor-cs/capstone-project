@@ -11,6 +11,7 @@ export default function Explore() {
       distance: ''
     }
   )
+  const [hikes, setHikes] = useState([])
  
   function handleChange(e) {
     const { name, value } = e.target
@@ -25,7 +26,7 @@ export default function Explore() {
     // fetch('/hikes', {
     //   method: 'GET',
     //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify()
+    //   body: JSON.stringify(userSearch)
     // })
     // .then(res=>res.json)
   }
@@ -33,6 +34,7 @@ export default function Explore() {
 
   return (
     <main className='explore-page'>
+      
       <div>
         <form onSubmit={onSubmit}>
           
@@ -46,6 +48,10 @@ export default function Explore() {
           <button>submit</button>
         </form>
       </div>
+      <div className='results'>
+
+      </div>
+
     </main>
   )
 }

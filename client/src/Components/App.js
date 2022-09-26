@@ -7,9 +7,14 @@ import Signup from './Signup';
 import About from './About';
 import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
+import User from './User';
+import Hikes from './Hikes';
 
 
 function App() {
+
+  const [isSignedIn, setIsSignedIn] = useState(false)
 
 
 
@@ -21,11 +26,13 @@ function App() {
         
         <Route exact path='/login' element={<Login />}></Route>
 
-        <Route exact path='/signup' element={<Signup />}></Route>
+        <Route exact path='/signup' element={<Signup />} setIsSignedIn={setIsSignedIn}></Route>
 
         <Route exact path='/explore' element={<Explore />}></Route>
 
         <Route exact path='/about' element={<About />}></Route>
+
+        <Route exact path = '/trails' element={<Hikes/>}></Route>
         
       </Routes>
     </div>
