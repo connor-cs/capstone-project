@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
+import TrailsContainer from './TrailsContainer'
 
 export default function Explore() {
 
@@ -56,8 +57,9 @@ export default function Explore() {
           <button>submit</button>
         </form>
       </div>
+      
       <div className='results'>
-
+        <TrailsContainer />
       </div>
 
     </main>
