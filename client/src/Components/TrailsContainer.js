@@ -1,8 +1,8 @@
 import React from 'react'
-import HikeCard from './TrailCard'
+import TrailCard from './TrailCard'
 import { useEffect, useState } from 'react'
 
-export default function Hikes() {
+export default function TrailsContainer() {
     const [trails, setTrails] = useState([])
      
     useEffect(fetch('/trails')

@@ -10,18 +10,24 @@ export default function Signup() {
   
   function handleSubmit(e) {
     e.preventDefault()
-
     fetch("/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({username, password})
     })
-    .then(res=>console.log(res.json))
+      .then(res=>res.json())
+    // fetch("/signup", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password
+    //   })
+    // })
+    // .then(res=>res.json())
+    // .then
   }
   
   //this needs tested

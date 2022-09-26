@@ -9,7 +9,7 @@ import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import User from './User';
-import Hikes from './Hikes';
+import TrailsContainer from './TrailsContainer';
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
 
         <Route exact path='/about' element={<About />}></Route>
 
-        <Route exact path = '/trails' element={<Hikes/>}></Route>
+        {/* <Route exact path = '/trails' element={<TrailsContainer/>}></Route> */}
         
       </Routes>
     </div>
