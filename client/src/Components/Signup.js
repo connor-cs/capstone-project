@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   
+  const [errors, setErrors] = useState([])
   const [password, setPassword] = useState("")
   const [username, setUsername] = useState("")
   const navigate = useNavigate()
@@ -16,6 +17,8 @@ export default function Signup() {
       body: JSON.stringify({username, password})
     })
       .then(res=>res.json())
+      .catch(errors=>setErrors(errors))
+      .then(console.log(errors))
     // fetch("/signup", {
     //   method: "POST",
     //   headers: {

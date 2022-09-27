@@ -9,13 +9,13 @@ export default function Login() {
   const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
     username: "",
-    email: "",
     password: "",
   });
 
   const navigate = useNavigate()
-  const { username, email, password } = formData
+  const { username, password } = formData
 
+  
   function handleChange(e) {
     setformData({
       ...formData,
@@ -28,9 +28,10 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault()
     const user = {
-      username, email, password
+      username, password
     }
-    fetch('/login', {
+    console.log(user)
+    fetch('/login/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
@@ -38,6 +39,7 @@ export default function Login() {
       .then(res => res.json())
       .then(navigate('/explore'))
       .catch(error => setErrors(error))
+      .then(console.log("errors", errors))
   }
 
   
@@ -45,11 +47,14 @@ export default function Login() {
     <main className="login-page">
       <div className="form-div">
         <form onSubmit={handleSubmit}>
+          
           <label>Username</label>
-          <input type="text" name="name" value={username} onChange={handleChange} />
+          <input type="text" name="username" value={username} onChange={handleChange} />
+          
           <label>Password</label>
           <input type="password" name="password" value={password} onChange={handleChange} />
           <button type="submit">Login</button>
+        
         </form>
       </div>
       {errors ? errors.map(e => <div>{e[0] + ': ' + e[1]}</div>) : null}
