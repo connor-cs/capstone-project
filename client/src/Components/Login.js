@@ -1,11 +1,14 @@
 import React from "react";
 import { useState, createContext, useContext } from "react"
 import { useNavigate } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import LoginContext from "./SignInContext";
+
+
 export default function Login() {
 
   // const signedIn = useContext(isSignedIn)
+
+  console.log(LoginContext == true)
   
   const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
