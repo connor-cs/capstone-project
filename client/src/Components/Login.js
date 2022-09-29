@@ -1,11 +1,12 @@
 import React from "react";
-import { useState } from "react"
+import { useState, createContext, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
 export default function Login() {
 
+  // const signedIn = useContext(isSignedIn)
+  
   const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
     username: "",
@@ -23,7 +24,6 @@ export default function Login() {
     })
   }
 
-
   //double check this
   function handleSubmit(e) {
     e.preventDefault()
@@ -31,12 +31,14 @@ export default function Login() {
       username, password
     }
     console.log(user)
-    fetch('/login/', {
+    fetch('/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
     })
       .then(res => res.json())
+      .then(data=>console.log(data))
+      //change signed in context here, then redirect to explore page
       .then(navigate('/explore'))
       .catch(error => setErrors(error))
       .then(console.log("errors", errors))
@@ -45,6 +47,7 @@ export default function Login() {
   
   return (
     <main className="login-page">
+      
       <div className="form-div">
         <form onSubmit={handleSubmit}>
           
@@ -57,6 +60,7 @@ export default function Login() {
         
         </form>
       </div>
+      {/* {signedIn? "TEST you are signed in" : " TEST signin now"} */}
       {errors ? errors.map(e => <div>{e[0] + ': ' + e[1]}</div>) : null}
     </main>
     //display map over errors array

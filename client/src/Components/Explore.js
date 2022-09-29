@@ -21,7 +21,8 @@ export default function Explore() {
     stateCopy.state = e
     setUserSearch(stateCopy)
   }
- 
+
+
   function handleChange(e) {
     const { name, value } = e.target
     setUserSearch({...userSearch, [name]: value})

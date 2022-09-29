@@ -7,34 +7,37 @@ import Signup from './Signup';
 import About from './About';
 import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
-import User from './User';
+import { useState, createContext } from 'react'
 import TrailsContainer from './TrailsContainer';
+import LoginContext from './SignInContext';
+import { isLoggedIn } from './SignInContext';
 
 
 function App() {
 
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  // const [isSignedIn, setIsSignedIn] = useState(false)
 
-
+  console.log(LoginContext)
 
   return (
     <div className='App'>
-      <Header />
-      <Routes>
-        <Route exact path='/' element={<Landing />}></Route>
-        
-        <Route exact path='/login' element={<Login />}></Route>
+      <LoginContext.Provider value={isLoggedIn.loggedIn}>
+        <Header />
+        <Routes>
+          <Route exact path='/' element={<Landing />}></Route>
 
-        <Route exact path='/signup' element={<Signup />} setIsSignedIn={setIsSignedIn}></Route>
+          <Route exact path='/login' element={<Login />}></Route>
 
-        <Route exact path='/explore' element={<Explore />}></Route>
+          <Route exact path='/signup' element={<Signup />} ></Route>
 
-        <Route exact path='/about' element={<About />}></Route>
+          <Route exact path='/explore' element={<Explore />}></Route>
 
-        {/* <Route exact path = '/trails' element={<TrailsContainer/>}></Route> */}
-        
-      </Routes>
+          <Route exact path='/about' element={<About />}></Route>
+
+          {/* <Route exact path = '/trails' element={<TrailsContainer/>}></Route> */}
+
+        </Routes>
+      </LoginContext.Provider>
     </div>
   );
 }
