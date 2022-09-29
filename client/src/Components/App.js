@@ -20,11 +20,11 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <Header isSignedIn={isSignedIn}/>
       <Routes>
         <Route exact path='/' element={<Landing />}></Route>
         
-        <Route exact path='/login' element={<Login />}></Route>
+        <Route exact path='/login' element={<Login isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>}></Route>
 
         <Route exact path='/signup' element={<Signup />} setIsSignedIn={setIsSignedIn}></Route>
 

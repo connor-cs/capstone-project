@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export default function Login() {
+export default function Login({isSignedIn, setIsSignedIn}) {
 
   const [errors, setErrors] = useState([])
   const [formData, setformData] = useState({
@@ -23,6 +23,10 @@ export default function Login() {
     })
   }
 
+  function updateLoginState() {
+
+  }
+
 
   //double check this
   function handleSubmit(e) {
@@ -37,6 +41,7 @@ export default function Login() {
       body: JSON.stringify(user)
     })
       .then(res => res.json())
+      .then(setIsSignedIn(true))
       .then(navigate('/explore'))
       .catch(error => setErrors(error))
       .then(console.log("errors", errors))
@@ -45,6 +50,7 @@ export default function Login() {
   
   return (
     <main className="login-page">
+      
       <div className="form-div">
         <form onSubmit={handleSubmit}>
           
@@ -57,6 +63,7 @@ export default function Login() {
         
         </form>
       </div>
+      {isSignedIn? "you are signed in" : "signin now"}
       {errors ? errors.map(e => <div>{e[0] + ': ' + e[1]}</div>) : null}
     </main>
     //display map over errors array
