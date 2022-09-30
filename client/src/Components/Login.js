@@ -1,13 +1,14 @@
 import React from "react";
 import { useState, createContext, useContext } from "react"
 import { useNavigate } from "react-router-dom";
-// import LoginContext from "./SignInContext";
+import {LoginContext} from "./LoggedInContext"
 import LoginForm from "./LoginForm";
+import LogoutButton from "./LogoutButton";
 
 
 export default function Login() {
 
-  // const signedIn = useContext(isSignedIn)
+  const {setLoggedIn, loggedIn} = useContext(LoginContext)
 
   // console.log(LoginContext == true)
   
@@ -18,7 +19,7 @@ export default function Login() {
     
     <main className="login-page">
       
-      <LoginForm />
+      {loggedIn ? <LogoutButton /> : <LoginForm />}
       
       {/* {signedIn? "TEST you are signed in" : " TEST signin now"} */}
       {/* {errors ? errors.map(e => <div>{e[0] + ': ' + e[1]}</div>) : null} */}

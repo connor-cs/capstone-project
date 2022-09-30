@@ -14,9 +14,9 @@ export default function LoginForm() {
       username: "",
       password: "",
     });
-  
-    const navigate = useNavigate()
     const { username, password } = formData
+    
+    const navigate = useNavigate()
     const {setLoggedIn, loggedIn} = useContext(LoginContext)
     console.log(setLoggedIn)
     
