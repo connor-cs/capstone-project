@@ -16,7 +16,7 @@ import { LoginContext } from './LoggedInContext';
 
 function App() {
   
-//   const LoginContext = createContext()
+//   const LoginContext = createContext() 
   
 //   const isLoggedIn = useState({
 //     loggedIn: false,
@@ -42,6 +42,8 @@ function App() {
           <Route exact path='/explore' element={<Explore />}></Route>
 
           <Route exact path='/about' element={<About />}></Route>
+
+          
 
           {/* <Route exact path = '/trails' element={<TrailsContainer/>}></Route> */}
 
