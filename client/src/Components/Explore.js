@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
 import TrailsContainer from './TrailsContainer'
+import getFullStateName from './HelperActions/GetFullStateName'
 
 export default function Explore() {
 
@@ -18,10 +19,11 @@ export default function Explore() {
     const stateCopy = {
       ...userSearch
     }
-    stateCopy.state = e
+    stateCopy.state = getFullStateName(e)
     setUserSearch(stateCopy)
   }
- 
+
+
   function handleChange(e) {
     const { name, value } = e.target
     setUserSearch({...userSearch, [name]: value})
@@ -30,8 +32,8 @@ export default function Explore() {
 
   function onSubmit(e) {
     e.preventDefault()
-    console.log('sumbitted')
-    console.log(userSearch)
+    console.log('search form sumbitted')
+    console.log("usersearch:", userSearch)
     // fetch('/trails', {
     //   method: 'GET',
     //   headers: {'Content-Type': 'application/json'},
@@ -45,15 +47,11 @@ export default function Explore() {
     <main className='explore-page'>
       
       <div>
-        <form onSubmit={onSubmit}>
-          
+        <form onSubmit={onSubmit}> 
           <input type="text" name="city" value={userSearch.city} placeholder="City" onChange={handleChange}></input>
-          
           <SelectUSState placeholder="state" name="state" value={userSearch.state} onChange={stateInput}/>
-          
           <label>Max distance:</label>
           <input type="number" name="distance" onChange={handleChange}></input>
-          
           <button>submit</button>
         </form>
       </div>
@@ -64,4 +62,6 @@ export default function Explore() {
 
     </main>
   )
+
+  
 }
