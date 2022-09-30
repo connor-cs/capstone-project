@@ -7,21 +7,30 @@ import Signup from './Signup';
 import About from './About';
 import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
-import { useState, createContext } from 'react'
+import { useState} from 'react'
+import { useContext, createContext } from 'react';
 import TrailsContainer from './TrailsContainer';
-import LoginContext from './SignInContext';
-import { isLoggedIn } from './SignInContext';
+import {LoggedInProvider} from './LoggedInContext';
+import { isLoggedIn } from './LoggedInContext';
 
 
 function App() {
+  
+//   const LoginContext = createContext()
+  
+//   const isLoggedIn = useState({
+//     loggedIn: false,
+//     toggleLogin: () => {
+//         console.log(this.loggedIn)
+//         return !this.loggedIn}
+// })
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // const [isSignedIn, setIsSignedIn] = useState(false)
-
-  console.log(LoginContext)
+  // console.log(LoginContext)
 
   return (
     <div className='App'>
-      <LoginContext.Provider value={isLoggedIn.loggedIn}>
+      <LoggedInProvider>
         <Header />
         <Routes>
           <Route exact path='/' element={<Landing />}></Route>
@@ -37,7 +46,7 @@ function App() {
           {/* <Route exact path = '/trails' element={<TrailsContainer/>}></Route> */}
 
         </Routes>
-      </LoginContext.Provider>
+      </LoggedInProvider>
     </div>
   );
 }
