@@ -32,7 +32,7 @@ export default function Explore() {
   function onSubmit(e) {
     e.preventDefault()
     console.log('sumbitted')
-    console.log(userSearch)
+    console.log("usersearch:", userSearch)
     // fetch('/trails', {
     //   method: 'GET',
     //   headers: {'Content-Type': 'application/json'},
@@ -46,15 +46,11 @@ export default function Explore() {
     <main className='explore-page'>
       
       <div>
-        <form onSubmit={onSubmit}>
-          
+        <form onSubmit={onSubmit}> 
           <input type="text" name="city" value={userSearch.city} placeholder="City" onChange={handleChange}></input>
-          
           <SelectUSState placeholder="state" name="state" value={userSearch.state} onChange={stateInput}/>
-          
           <label>Max distance:</label>
           <input type="number" name="distance" onChange={handleChange}></input>
-          
           <button>submit</button>
         </form>
       </div>
@@ -65,4 +61,6 @@ export default function Explore() {
 
     </main>
   )
+
+  
 }
