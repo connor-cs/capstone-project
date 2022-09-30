@@ -27,8 +27,8 @@ export default function Signup() {
         }
         else {
           res.json()
-            .then(errors => setErrors(errors))
-            .then(console.log(errors))
+            .then(errors => setErrors([...errors.error]))
+             .then(console.log(errors))
         }
       })
   }
@@ -44,6 +44,7 @@ export default function Signup() {
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
         <button type="submit">Signup</button>
       </form>
+      {errors ? errors.map(e => <div>{e}</div>) : null}
     </main>
   );
 }

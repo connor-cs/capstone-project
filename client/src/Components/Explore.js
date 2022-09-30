@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
 import TrailsContainer from './TrailsContainer'
+import getFullStateName from './HelperActions/GetFullStateName'
 
 export default function Explore() {
 
@@ -18,7 +19,7 @@ export default function Explore() {
     const stateCopy = {
       ...userSearch
     }
-    stateCopy.state = e
+    stateCopy.state = getFullStateName(e)
     setUserSearch(stateCopy)
   }
 
@@ -31,7 +32,7 @@ export default function Explore() {
 
   function onSubmit(e) {
     e.preventDefault()
-    console.log('sumbitted')
+    console.log('search form sumbitted')
     console.log("usersearch:", userSearch)
     // fetch('/trails', {
     //   method: 'GET',
