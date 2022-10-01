@@ -13,7 +13,7 @@ STATES.each do |state|
 end
 
 State.all.each do |state|
-    url = URI("https://trailapi-trailapi.p.rapidapi.com/activity/?limit=25&q-state_cont=#{state.name}&q-activities_activity_type_name_eq=hiking")
+    url = URI("https://trailapi-trailapi.p.rapidapi.com/activity/?limit=60&q-state_cont=#{state.name}&q-activities_activity_type_name_eq=hiking")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE

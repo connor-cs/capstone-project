@@ -10,7 +10,6 @@ import Explore from './Explore';
 import { Routes, Route } from 'react-router-dom'
 import { useState} from 'react'
 import { useContext} from 'react';
-import TrailsContainer from './TrailsContainer';
 import {LoggedInProvider} from './LoggedInContext';
 import { LoginContext } from './LoggedInContext';
 

@@ -28,7 +28,7 @@ export default function Signup() {
         else {
           res.json()
             .then(errors => setErrors([...errors.error]))
-             .then(console.log(errors))
+            .then(console.log(errors))
         }
       })
   }

@@ -1,6 +1,5 @@
-import React from 'react'
 
-export default function getFullStateName(stateInput) {
+export default function getStateId(stateInput) {
 
   const states = {
     AL: {

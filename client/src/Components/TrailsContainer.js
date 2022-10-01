@@ -2,7 +2,7 @@ import React from 'react'
 import TrailCard from './TrailCard'
 import { useEffect, useState } from 'react'
 
-export default function TrailsContainer() {
+export default function TrailsContainer({errors}) {
     const [trails, setTrails] = useState([])
      
     // useEffect(fetch('/trails')
@@ -11,7 +11,7 @@ export default function TrailsContainer() {
 
     return (
         <div>
-
+            {errors ? errors : null}
         </div>
 
     )

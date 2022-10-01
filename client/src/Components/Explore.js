@@ -13,7 +13,8 @@ export default function Explore() {
       distance: ''
     }
   )
-  const [hikes, setHikes] = useState([])
+  const [errors, setErrors] = useState([])
+  const [trails, setTrails] = useState([])
 
   function stateInput(e) {
     const stateCopy = {
@@ -35,14 +36,24 @@ export default function Explore() {
   function onSubmit(e) {
     e.preventDefault()
     console.log("usersearch:", userSearch)
+
     fetch('/trails', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userSearch)
     })
-      .then(res => res.json)
-      .then(data => console.log(data))
-      .then(console.log('hello from fetch request'))
+      .then(res => {
+        if (res.ok) {
+          res.json()
+            .then(data => setTrails(data))
+            .then(console.log(trails))
+        }
+        else {
+          res.json()
+            .then(errors => setErrors([...errors.error]))
+          console.log(errors)
+        }
+      })
   }
 
 
@@ -60,7 +71,7 @@ export default function Explore() {
       </div>
 
       <div className='results'>
-        <TrailsContainer />
+        <TrailsContainer errors={errors}/>
       </div>
 
     </main>

@@ -4,7 +4,7 @@ import { useContext } from 'react'
 
 export default function LogoutButton() {
     
-    const {loggedIn, setLoggedIn} = useContext(LoginContext)
+    const {setLoggedIn} = useContext(LoginContext)
 
     function handleLogout () {
         fetch('/logout', {
