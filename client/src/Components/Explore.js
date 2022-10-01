@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
 import TrailsContainer from './TrailsContainer'
-import getFullStateName from './HelperActions/GetFullStateName'
+import getStateId from './HelperActions/GetStateId'
 
 export default function Explore() {
 
@@ -19,43 +19,46 @@ export default function Explore() {
     const stateCopy = {
       ...userSearch
     }
-    stateCopy.state = getFullStateName(e)
+    stateCopy.state = getStateId(e)
+    console.log(stateCopy)
     setUserSearch(stateCopy)
   }
 
 
   function handleChange(e) {
     const { name, value } = e.target
-    setUserSearch({...userSearch, [name]: value})
+    setUserSearch({ ...userSearch, [name]: value })
     console.log('name:', name, 'value:', value)
   }
 
+  //post request to tell it what data is needed
   function onSubmit(e) {
     e.preventDefault()
-    console.log('search form sumbitted')
     console.log("usersearch:", userSearch)
-    // fetch('/trails', {
-    //   method: 'GET',
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify(userSearch)
-    // })
-    // .then(res=>res.json)
+    fetch('/trails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userSearch)
+    })
+      .then(res => res.json)
+      .then(data => console.log(data))
+      .then(console.log('hello from fetch request'))
   }
 
 
   return (
     <main className='explore-page'>
-      
+
       <div>
-        <form onSubmit={onSubmit}> 
+        <form onSubmit={onSubmit}>
           <input type="text" name="city" value={userSearch.city} placeholder="City" onChange={handleChange}></input>
-          <SelectUSState placeholder="state" name="state" value={userSearch.state} onChange={stateInput}/>
+          <SelectUSState placeholder="state" name="state" value={userSearch.state} onChange={stateInput} />
           <label>Max distance:</label>
           <input type="number" name="distance" onChange={handleChange}></input>
           <button>submit</button>
         </form>
       </div>
-      
+
       <div className='results'>
         <TrailsContainer />
       </div>
@@ -63,5 +66,5 @@ export default function Explore() {
     </main>
   )
 
-  
+
 }
