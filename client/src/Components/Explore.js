@@ -3,6 +3,7 @@ import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
 import TrailsContainer from './TrailsContainer'
 import getStateId from './HelperActions/GetStateId'
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 export default function Explore() {
 
@@ -45,13 +46,12 @@ export default function Explore() {
       .then(res => {
         if (res.ok) {
           res.json()
-            .then(data => setTrails(data))
-            .then(console.log(trails))
+            .then(data => setTrails([data]))
+            .then(console.log("current trails:", trails))
         }
         else {
           res.json()
             .then(errors => setErrors([...errors.error]))
-          console.log(errors)
         }
       })
   }
@@ -71,7 +71,7 @@ export default function Explore() {
       </div>
 
       <div className='results'>
-        <TrailsContainer errors={errors}/>
+        <TrailsContainer trails = {trails} errors={errors}/>
       </div>
 
     </main>

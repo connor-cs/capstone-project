@@ -12,6 +12,7 @@ import { useState} from 'react'
 import { useContext} from 'react';
 import {LoggedInProvider} from './LoggedInContext';
 import { LoginContext } from './LoggedInContext';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
 
   // console.log(LoginContext)
 
+  const render = (status: Status) => {
+    return <h1>{status}</h1>;
+  };
+
   return (
     <div className='App'>
       <LoggedInProvider>
@@ -38,9 +43,11 @@ function App() {
           <Route exact path='/login' element={<Login />}></Route>
 
           <Route exact path='/signup' element={<Signup />} ></Route>
-
+          
+          <Wrapper apiKey={AIzaSyAgxJjemhhztx1JE2lknwHDE8y_a9T6vcE}>
           <Route exact path='/explore' element={<Explore />}></Route>
-
+          </Wrapper>
+          
           <Route exact path='/about' element={<About />}></Route>
 
           <Route exact path='/account' element = {<User />}></Route>
