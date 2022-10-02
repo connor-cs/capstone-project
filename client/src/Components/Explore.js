@@ -3,7 +3,9 @@ import { useState } from 'react'
 import SelectUSState from 'react-select-us-states'
 import TrailsContainer from './TrailsContainer'
 import getStateId from './HelperActions/GetStateId'
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import Map from './Map'
+
+
 
 export default function Explore() {
 
@@ -71,7 +73,10 @@ export default function Explore() {
       </div>
 
       <div className='results'>
-        <TrailsContainer trails = {trails} errors={errors}/>
+          {trails? <TrailsContainer trails={trails} errors={errors}/> : null}
+      </div>
+
+      <div className='map-container'>
       </div>
 
     </main>
